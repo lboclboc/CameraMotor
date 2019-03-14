@@ -33,7 +33,7 @@
 // CLK divisor of 8 and OCRA0 11 -> 100us ticks.
 #define OCRA0_COUNT 11
 //#define TICKS 104462  // Ticks per step in order to make a 24h rotation.
-#define TICKS (104462*80/100)  // Ticks per step in order to make a 24h rotation.
+#define TICKS 89932  // Ticks per step in order to make a 24h rotation.
 
 //#define CS_val 5 // clk I/O /1024 (From prescaler).
 //#define CS_val 3 // clk I/O /64 (From prescaler).
