@@ -27,8 +27,8 @@
 #define WGM01_val ((WGM_val >> WGM01) & 1)
 #define WGM00_val ((WGM_val >> WGM00) & 1)
 
-#define POWERBANK_CYCLE 9000 // ms
-#define POWERBANK_PULSE 700   // ms
+#define POWERBANK_CYCLE 8500 // ms
+#define POWERBANK_PULSE 750   // ms
 
 // CLK divisor of 8 and OCRA0 11 -> 100us ticks.
 #define OCRA0_COUNT 11
