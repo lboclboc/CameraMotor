@@ -1,3 +1,6 @@
+sdkconfig.old
+build
+.settings
 CameraMotor
 CameraMotor.hex
 CameraMotor.lst
