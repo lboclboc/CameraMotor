@@ -4,6 +4,7 @@
 #
 
 PROJECT_NAME := project_template
+CFLAGS += -DICACHE_FLASH
 
 include $(IDF_PATH)/make/project.mk
 

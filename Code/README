@@ -1,7 +1,1 @@
-ADC-Performance
----------------
-adc_read works to about 4.5KHz sample rate (clk-div does not matter)
-
-adc_read_fast sampling 1 sample runs in about 20KHz with clkdiv=8 and clkdiv=32
-
-adc_read_fast 8K buffer and clkdiv=8->156KHz, clkdiv=32 -> 98KHz
+To compile, read https://www.esp8266.com/viewtopic.php?f=9&t=12754

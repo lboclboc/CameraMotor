@@ -5,6 +5,10 @@
    software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
    CONDITIONS OF ANY KIND, either express or implied.
 */
+#define  ICACHE_FLASH_ATTR
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <stdio.h>
 
@@ -12,6 +16,13 @@
 #include <esp_task_wdt.h>
 #include <driver/adc.h>
 #include <driver/gpio.h>
+
+void app_main(void);
+
+#ifdef __cplusplus
+}
+#endif
+
 
 /******************************************************************************
  * FunctionName : app_main
