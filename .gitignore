@@ -1,7 +1,23 @@
 CameraMotor.bak
 CameraMotor.kicad_pcb-bak
 Clock.svg.2019_02_28_22_33_54.0.svg
+Datasheets/FreeRTOS_Reference_Manual_V10.0.0.pdf
+KiCad/pcb-reciept.pdf
+KiCad/USB-Connector.fcstd1
 Naming
-USB-Connector.fcstd1
-_autosave-CameraMotor.kicad_pcb
+
+sdkconfig.old
+build
+.settings
+CameraMotor
+CameraMotor.hex
+CameraMotor.lst
+CameraMotor.o
+CameraMotor.bin
+db
+eclipse-debug-opts
+error
+x
+../Datasheets/FreeRTOS_Reference_Manual_V10.0.0.pdf
+../KiCad/pcb-reciept.pdf
 

@@ -17,7 +17,7 @@
 				<configuration artifactName="${ProjName}" buildProperties="" description="" id="0.1862346903" name="Default" parent="org.eclipse.cdt.build.core.prefbase.cfg">
 					<folderInfo id="0.1862346903." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.2029290391" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
-							<targetPlatform id="org.eclipse.cdt.build.core.prefbase.toolchain.2029290391.870234929" name=""/>
+							<targetPlatform binaryParser="" id="org.eclipse.cdt.build.core.prefbase.toolchain.2029290391.870234929" name=""/>
 							<builder id="org.eclipse.cdt.build.core.settings.default.builder.1081389978" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.695847099" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.931062070" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
@@ -27,6 +27,10 @@
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.2141045307" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 							<tool id="org.eclipse.cdt.build.core.settings.holder.1713137886" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.18827357" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/components&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
+								</option>
 								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.52776486" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
 							</tool>
 						</toolChain>
@@ -35,13 +39,108 @@
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
+		<cconfiguration id="0.1862346903.89854131">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="0.1862346903.89854131" moduleId="org.eclipse.cdt.core.settings" name="ESP8266">
+				<macros>
+					<stringMacro name="ESP8266_RTOS_SDK" type="VALUE_PATH_DIR" value="/home/lasse/git/ESP8266_RTOS_SDK/"/>
+				</macros>
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="0.1862346903.89854131" name="ESP8266" parent="org.eclipse.cdt.build.core.prefbase.cfg">
+					<folderInfo id="0.1862346903.89854131." name="/" resourcePath="">
+						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.1349974648" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
+							<targetPlatform binaryParser="" id="org.eclipse.cdt.build.core.prefbase.toolchain.1349974648.1120843775" name=""/>
+							<builder id="org.eclipse.cdt.build.core.settings.default.builder.1894521645" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder">
+								<outputEntries>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
+									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="build"/>
+								</outputEntries>
+							</builder>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.1965046608" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs"/>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.102226417" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.119742256" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__ESP_FILE__=__FILE__"/>
+								</option>
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.23440608" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/esp8266/include"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/include/freertos"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/include/freertos/private"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/components&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/build/include&quot;"/>
+								</option>
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1397401952" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.500552857" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.1164216915" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/esp8266/include"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/include/freertos"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/include/freertos/private"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/build/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/components&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.901427380" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__ESP_FILE__=__FILE__"/>
+								</option>
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1157543149" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1908260367" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder">
+								<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.533589426" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/esp8266/include"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/include/freertos"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/include/freertos/private"/>
+									<listOptionValue builtIn="false" value="/home/lasse/git/ESP8266_RTOS_SDK/components/freertos/port/esp8266/include/freertos/"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/build/include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/components&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
+								</option>
+								<option id="org.eclipse.cdt.build.core.settings.holder.symbols.1806755016" name="Symbols" superClass="org.eclipse.cdt.build.core.settings.holder.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="__ESP_FILE__=__FILE__"/>
+								</option>
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.685383534" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="components/stepper"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="main"/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="CameraMotor.null.549431709" name="CameraMotor"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Default">
+			<resource resourceType="PROJECT" workspacePath="/CameraMotor"/>
+		</configuration>
+		<configuration configurationName="ESP8266">
+			<resource resourceType="PROJECT" workspacePath="/CameraMotor"/>
+		</configuration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.427257704;cdt.managedbuild.toolchain.gnu.cross.base.427257704.1577518980;cdt.managedbuild.tool.gnu.cross.cpp.compiler.2099142554;cdt.managedbuild.tool.gnu.cpp.compiler.input.814849333">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="0.1862346903.89854131">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="0.1862346903">
@@ -51,7 +150,4 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
