@@ -9,7 +9,7 @@
 #define STEPPER_H_
 #include <driver/gpio.h>
 #include <timers.h>
-#include "../../main/Led.h"
+#include "Led.h"
 
 class Stepper
 {

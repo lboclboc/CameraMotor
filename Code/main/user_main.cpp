@@ -26,7 +26,7 @@ void app_main(void);
 }
 #endif
 
-#include "../components/stepper/Stepper.h"
+#include "Stepper.h"
 
 /******************************************************************************
  * FunctionName : app_main
