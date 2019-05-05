@@ -45,11 +45,11 @@ Stepper::Stepper(gpio_num_t o, gpio_num_t y, gpio_num_t p, gpio_num_t b) :
 		xLastWakeTime(0)
 {
 	gpio_config_t gpio_cfg = {
-		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin), 		/*!< GPIO pin: set with bit mask, each bit maps to a GPIO */
-		GPIO_MODE_OUTPUT,		/*!< GPIO mode: set input/output mode */
-		GPIO_PULLUP_DISABLE, 	/*!< GPIO pull-up */
-		GPIO_PULLDOWN_DISABLE, 	/*!< GPIO pull-down */
-		GPIO_INTR_DISABLE, 		/*!< GPIO interrupt type */
+		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin),
+		GPIO_MODE_OUTPUT,
+		GPIO_PULLUP_DISABLE,
+		GPIO_PULLDOWN_DISABLE,
+		GPIO_INTR_DISABLE,
 	};
     ESP_ERROR_CHECK(gpio_config(&gpio_cfg));
 
