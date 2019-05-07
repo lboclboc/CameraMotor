@@ -21,3 +21,8 @@ x
 ../Datasheets/FreeRTOS_Reference_Manual_V10.0.0.pdf
 ../KiCad/pcb-reciept.pdf
 
+/3D/*.FCStd2
+/3D/*.FCStd3
+*.FCStd4
+*.fpp
+*.gx
