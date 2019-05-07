@@ -1,4 +1,4 @@
-update=5/7/2019 8:31:49 PM
+update=5/7/2019 9:56:33 PM
 version=1
 last_client=kicad
 [cvpcb]
@@ -233,3 +233,13 @@ dPairViaGap=0.25
 [eeschema]
 version=1
 LibDir=
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=Pcbnew
+SpiceAjustPassiveValues=0
+LabSize=50
+ERC_TestSimilarLabels=1
