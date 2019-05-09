@@ -18,6 +18,7 @@ db
 eclipse-debug-opts
 error
 x
-../Datasheets/FreeRTOS_Reference_Manual_V10.0.0.pdf
-../KiCad/pcb-reciept.pdf
-
+Datasheets/FreeRTOS_Reference_Manual_V10.0.0.pdf
+KiCad/pcb-reciept.pdf
+Code/main/html_page.h
+Code/main/html_page.h.gch
