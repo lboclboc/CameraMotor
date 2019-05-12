@@ -18,6 +18,7 @@ public:
 	virtual ~Stepper();
 	static void task(void *);
 	void step();
+	void set_period(float seconds);
 
 protected:
 	void run();

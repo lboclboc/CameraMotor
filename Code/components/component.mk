@@ -1,1 +1,1 @@
-COMPONENT_SRCDIRS := stepper led
+COMPONENT_SRCDIRS := stepper led Jinja2CppLight

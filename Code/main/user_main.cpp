@@ -42,26 +42,37 @@ const int WIFI_CONNECTED_BIT = BIT0;
 static Stepper stepper;
 xTaskHandle xStepperTask;
 
-esp_err_t hello_get_handler(httpd_req_t *req)
+esp_err_t root_get_handler(httpd_req_t *req)
 {
-    char*  buf;
-    size_t buf_len;
+//    char*  buf;
+//    size_t buf_len;
 
-    /* Get header value string length and allocate memory for length + 1,
-     * extra byte for null termination */
-    buf_len = httpd_req_get_hdr_value_len(req, "Host") + 1;
-    if (buf_len > 1) {
-        buf = (char *)malloc(buf_len);
-        /* Copy null terminated value string into buffer */
-        if (httpd_req_get_hdr_value_str(req, "Host", buf, buf_len) == ESP_OK) {
-            ESP_LOGI(TAG, "Found header => Host: %s", buf);
-        }
-        free(buf);
-    }
+//    /* Get header value string length and allocate memory for length + 1,
+//     * extra byte for null termination */
+//    buf_len = httpd_req_get_hdr_value_len(req, "Host") + 1;
+//    if (buf_len > 1) {
+//        buf = (char *)malloc(buf_len);
+//        /* Copy null terminated value string into buffer */
+//        if (httpd_req_get_hdr_value_str(req, "Host", buf, buf_len) == ESP_OK) {
+//            ESP_LOGI(TAG, "Found header => Host: %s", buf);
+//        }
+//        free(buf);
+//    }
 
-    /* Set some custom headers */
-    httpd_resp_set_hdr(req, "Custom-Header-1", "Custom-Value-1");
-    httpd_resp_set_hdr(req, "Custom-Header-2", "Custom-Value-2");
+	char query[200];
+	char period_str[20];
+	char timelapse_str[20];
+	ESP_ERROR_CHECK(httpd_req_get_url_query_str(req, query, sizeof query));
+	ESP_ERROR_CHECK(httpd_query_key_value(query, "period", period_str, sizeof period_str));
+	ESP_ERROR_CHECK(httpd_query_key_value(query, "timelapse", timelapse_str, sizeof timelapse_str));
+	float period = atof(period_str);
+	float timelapse = atof(timelapse_str);
+	stepper.set_period(period);
+	ESP_LOGI(TAG, "Period=%d, timelapse=%d", (int)(period*100), (int)(timelapse*100));
+
+//    /* Set some custom headers */
+//    httpd_resp_set_hdr(req, "Custom-Header-1", "Custom-Value-1");
+//    httpd_resp_set_hdr(req, "Custom-Header-2", "Custom-Value-2");
 
     /* Send response with custom headers and body set as the
      * string passed in user context*/
@@ -70,11 +81,11 @@ esp_err_t hello_get_handler(httpd_req_t *req)
     return ESP_OK;
 }
 
-httpd_uri_t hello = {
-    "/hello",
+httpd_uri_t root = {
+    "/",
     HTTP_GET,
-    hello_get_handler,
-    strdup("Hello World!")
+    root_get_handler,
+    strdup("EQ Motor!")
 };
 
 httpd_handle_t start_webserver(void)
@@ -87,11 +98,7 @@ httpd_handle_t start_webserver(void)
     if (httpd_start(&server, &config) == ESP_OK) {
         // Set URI handlers
         ESP_LOGI(TAG, "Registering URI handlers");
-        httpd_register_uri_handler(server, &hello);
-#if 0
-        httpd_register_uri_handler(server, &echo);
-        httpd_register_uri_handler(server, &ctrl);
-#endif
+        httpd_register_uri_handler(server, &root);
         return server;
     }
 

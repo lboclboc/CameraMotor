@@ -86,6 +86,11 @@ void Stepper::task(void *p)
 	s->run();
 }
 
+void Stepper::set_period(float seconds)
+{
+	ticks = (int)(seconds * 1000 / portTICK_PERIOD_MS);
+}
+
 void Stepper::run()
 {
 	printf("Stepper::run@%p called, ticks=%ld\n", this, ticks);
