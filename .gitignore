@@ -27,3 +27,5 @@ Code/main/html_page.h.gch
 *.FCStd4
 *.fpp
 *.gx
+KiCad/CameraMotor-rescue.lib
+KiCad/rescue-backup/
