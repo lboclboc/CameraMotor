@@ -19,6 +19,7 @@ public:
 	static void task(void *);
 	void step();
 	void set_period(float seconds);
+	void init();
 
 protected:
 	void run();
@@ -33,8 +34,9 @@ private:
 	unsigned long ticks;		// Number of ticks between stepping.
 	enum {fwd=1, rev=-1} direction;
 	const static unsigned char phases[8];
-	TickType_t xLastWakeTime;
+	TickType_t last_wake_time;
 	Led led;
+	TaskHandle_t task_handle;
 };
 
 #endif /* STEPPER_H_ */

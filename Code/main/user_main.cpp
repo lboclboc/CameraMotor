@@ -31,6 +31,10 @@ void app_main(void);
 #endif
 
 #include "Stepper.h"
+
+char template_period[20];
+char template_timelapse[20];
+
 #include "html_page.h"
 
 /* FreeRTOS event group to signal when we are connected*/
@@ -40,7 +44,6 @@ const int WIFI_CONNECTED_BIT = BIT0;
 
 
 static Stepper stepper;
-xTaskHandle xStepperTask;
 
 esp_err_t root_get_handler(httpd_req_t *req)
 {
@@ -60,23 +63,25 @@ esp_err_t root_get_handler(httpd_req_t *req)
 //    }
 
 	char query[200];
-	char period_str[20];
-	char timelapse_str[20];
+
 	ESP_ERROR_CHECK(httpd_req_get_url_query_str(req, query, sizeof query));
-	ESP_ERROR_CHECK(httpd_query_key_value(query, "period", period_str, sizeof period_str));
-	ESP_ERROR_CHECK(httpd_query_key_value(query, "timelapse", timelapse_str, sizeof timelapse_str));
-	float period = atof(period_str);
-	float timelapse = atof(timelapse_str);
-	stepper.set_period(period);
-	ESP_LOGI(TAG, "Period=%d, timelapse=%d", (int)(period*100), (int)(timelapse*100));
 
-//    /* Set some custom headers */
-//    httpd_resp_set_hdr(req, "Custom-Header-1", "Custom-Value-1");
-//    httpd_resp_set_hdr(req, "Custom-Header-2", "Custom-Value-2");
+	if (httpd_query_key_value(query, "period", template_period, sizeof template_period) == ESP_OK) {
+		float period = atof(template_period);
+		stepper.set_period(period);
+		ESP_LOGI(TAG, "Period=%d", (int)(period*100));
+	}
 
-    /* Send response with custom headers and body set as the
-     * string passed in user context*/
-    httpd_resp_send(req, html_page, sizeof html_page);
+    if (httpd_query_key_value(query, "timelapse", template_timelapse, sizeof template_timelapse) == ESP_OK) {
+		float timelapse = atof(template_timelapse);
+		ESP_LOGI(TAG, "timelapse=%d", (int)(timelapse*100));
+    }
+
+    /* Send response */
+	for (const char *s : html_page) {
+		httpd_resp_send_chunk(req, s, strlen(s));
+	}
+	httpd_resp_send_chunk(req, 0, 0);
 
     return ESP_OK;
 }
@@ -185,10 +190,6 @@ void app_main(void)
 {
     static httpd_handle_t server = NULL;
     printf("SDK version:%s\n", esp_get_idf_version());
+//    stepper.init()
     init_wifi(&server);
-
-	/* Start the stepper task - defined in this file. */
-	if(xTaskCreate(Stepper::task, "blinkenLichten", configMINIMAL_STACK_SIZE + 512, &stepper, tskIDLE_PRIORITY+10, &xStepperTask) == pdPASS) {
-		printf("Task 1 was properly created\n\r");
-	}
 }

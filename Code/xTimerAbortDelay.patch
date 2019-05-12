@@ -1,0 +1,25 @@
+From 87b40e3f75127925f15757b6ce69a98dbf1f6c76 Mon Sep 17 00:00:00 2001
+From: Lars Berntzon <lars.berntzon@cecilia-data.se>
+Date: Sun, 12 May 2019 22:35:55 +0200
+Subject: [PATCH] Enabled xTaskAbortDelay
+
+---
+ components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h b/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h
+index a971d28..56f0b07 100644
+--- a/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h
++++ b/components/freertos/port/esp8266/include/freertos/FreeRTOSConfig.h
+@@ -98,6 +98,8 @@ to exclude the API function. */
+ #define INCLUDE_vTaskSuspend			1
+ #define INCLUDE_vTaskDelayUntil			1
+ #define INCLUDE_vTaskDelay				1
++#define INCLUDE_xTaskAbortDelay         1
++#define INCLUDE_eTaskGetState           1
+ 
+ /*set the #define for debug info*/
+ #define INCLUDE_xTaskGetCurrentTaskHandle 1
+-- 
+2.7.4
+

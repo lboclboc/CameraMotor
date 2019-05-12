@@ -42,7 +42,17 @@ Stepper::Stepper(gpio_num_t o, gpio_num_t y, gpio_num_t p, gpio_num_t b) :
 		current_phase(0),
 		ticks(10 / portTICK_PERIOD_MS),
 		direction(fwd),
-		xLastWakeTime(0)
+		last_wake_time(0),
+		task_handle(0)
+{
+
+}
+
+Stepper::~Stepper() {
+	// TODO Auto-generated destructor stub
+}
+
+void Stepper::init()
 {
 	gpio_config_t gpio_cfg = {
 		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin),
@@ -54,12 +64,13 @@ Stepper::Stepper(gpio_num_t o, gpio_num_t y, gpio_num_t p, gpio_num_t b) :
     ESP_ERROR_CHECK(gpio_config(&gpio_cfg));
 
     printf("Setting wake times...\n");
-	xLastWakeTime = xTaskGetTickCount();
+	last_wake_time = xTaskGetTickCount();
 	printf("Stepper created at address %p, tick=%ld\n", this, ticks);
-}
 
-Stepper::~Stepper() {
-	// TODO Auto-generated destructor stub
+	/* Start the stepper task - defined in this file. */
+	if(xTaskCreate(Stepper::task, "stepper", configMINIMAL_STACK_SIZE + 512, this, tskIDLE_PRIORITY+10, &task_handle) == pdPASS) {
+		printf("Task 1 was properly created\n\r");
+	}
 }
 
 void Stepper::step()
@@ -89,6 +100,10 @@ void Stepper::task(void *p)
 void Stepper::set_period(float seconds)
 {
 	ticks = (int)(seconds * 1000 / portTICK_PERIOD_MS);
+	if (ticks == 0) ticks = 1;
+	if (task_handle != 0) {
+		xTaskAbortDelay(task_handle);
+	}
 }
 
 void Stepper::run()
@@ -96,7 +111,7 @@ void Stepper::run()
 	printf("Stepper::run@%p called, ticks=%ld\n", this, ticks);
 	while(1)
 	{
-		vTaskDelayUntil(&xLastWakeTime, ticks);
+		vTaskDelayUntil(&last_wake_time, ticks);
 		step();
 	}
 }
