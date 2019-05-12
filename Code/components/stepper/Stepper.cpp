@@ -101,9 +101,9 @@ void Stepper::set_period(float seconds)
 {
 	ticks = (int)(seconds * 1000 / portTICK_PERIOD_MS);
 	if (ticks == 0) ticks = 1;
-	if (task_handle != 0) {
-		xTaskAbortDelay(task_handle);
-	}
+//	if (task_handle != 0) {
+//		xTaskAbortDelay(task_handle);
+//	}
 }
 
 void Stepper::run()

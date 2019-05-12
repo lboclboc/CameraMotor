@@ -6,6 +6,7 @@
    CONDITIONS OF ANY KIND, either express or implied.
 */
 
+#include <string>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -63,19 +64,26 @@ esp_err_t root_get_handler(httpd_req_t *req)
 //    }
 
 	char query[200];
+	float period = 0.01;
+	float timelapse = 0;
+	if (httpd_req_get_url_query_str(req, query, sizeof query) == ESP_OK) {
+		if (httpd_query_key_value(query, "period", template_period, sizeof template_period) == ESP_OK) {
+			period = atof(template_period);
+			stepper.set_period(period);
+			ESP_LOGI(TAG, "Period=%d", (int)(period*100));
+		}
 
-	ESP_ERROR_CHECK(httpd_req_get_url_query_str(req, query, sizeof query));
-
-	if (httpd_query_key_value(query, "period", template_period, sizeof template_period) == ESP_OK) {
-		float period = atof(template_period);
-		stepper.set_period(period);
-		ESP_LOGI(TAG, "Period=%d", (int)(period*100));
+		if (httpd_query_key_value(query, "timelapse", template_timelapse, sizeof template_timelapse) == ESP_OK) {
+			timelapse = atof(template_timelapse);
+			ESP_LOGI(TAG, "timelapse=%d", (int)(timelapse*100));
+		}
 	}
 
-    if (httpd_query_key_value(query, "timelapse", template_timelapse, sizeof template_timelapse) == ESP_OK) {
-		float timelapse = atof(template_timelapse);
-		ESP_LOGI(TAG, "timelapse=%d", (int)(timelapse*100));
-    }
+//	sprintf(template_period, " %f", period);
+	gcvtf(period, 3,template_period);
+	gcvtf(timelapse, 3,template_timelapse);
+	ESP_LOGI(TAG, "template_perios=%s", template_period);
+
 
     /* Send response */
 	for (const char *s : html_page) {
@@ -190,6 +198,6 @@ void app_main(void)
 {
     static httpd_handle_t server = NULL;
     printf("SDK version:%s\n", esp_get_idf_version());
-//    stepper.init()
+    stepper.init();
     init_wifi(&server);
 }
