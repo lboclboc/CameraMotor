@@ -14,7 +14,7 @@
 class Stepper
 {
 public:
-	Stepper(gpio_num_t o=GPIO_NUM_12, gpio_num_t y=GPIO_NUM_13, gpio_num_t p=GPIO_NUM_14, gpio_num_t b=GPIO_NUM_15);
+	Stepper(gpio_num_t b=GPIO_NUM_12, gpio_num_t p=GPIO_NUM_13, gpio_num_t y=GPIO_NUM_14, gpio_num_t o=GPIO_NUM_15);
 	virtual ~Stepper();
 	static void task(void *);
 	void step();

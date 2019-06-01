@@ -3,6 +3,12 @@
 # project subdirectory.
 #
 
+export PATH:=$(PATH):/usr/local/crosscompilers/xtensa-lx106-elf/bin/
+
+$(info PATH=$(PATH))
+
+IDF_PATH ?= /home/lasse/git/ESP8266_RTOS_SDK
+
 PROJECT_NAME := project_template
 CFLAGS += -DICACHE_FLASH
 

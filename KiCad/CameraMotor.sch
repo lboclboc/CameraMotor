@@ -140,7 +140,7 @@ Wire Wire Line
 Wire Wire Line
 	9950 2900 10050 2900
 $Comp
-L RF_Module:ESP-12E U1
+L CameraMotor-rescue:ESP-12E-RF_Module U1
 U 1 1 5CD21681
 P 5000 4400
 F 0 "U1" V 5046 3656 50  0000 R CNN
@@ -151,7 +151,7 @@ F 3 "http://wiki.ai-thinker.com/_media/esp8266/esp8266_series_modules_user_manua
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Connector:Conn_01x05_Male J2
+L CameraMotor-rescue:Conn_01x05_Male-Connector J2
 U 1 1 5CD22440
 P 5200 1450
 F 0 "J2" V 5262 1162 50  0000 R CNN
@@ -162,7 +162,7 @@ F 3 "~" H 5200 1450 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 $Comp
-L Transistor_Array:ULN2003 U2
+L CameraMotor-rescue:ULN2003-Transistor_Array U2
 U 1 1 5CD248CF
 P 5200 2600
 F 0 "U2" V 5246 3130 50  0000 L CNN
@@ -187,14 +187,6 @@ Wire Wire Line
 	5400 1650 5400 1700
 Wire Wire Line
 	5400 1700 6300 1700
-Wire Wire Line
-	5000 1650 5000 2200
-Wire Wire Line
-	5100 2900 5100 2200
-Wire Wire Line
-	5200 1650 5200 2200
-Wire Wire Line
-	5300 2900 5300 2200
 $Comp
 L CameraMotor-rescue:GNDD #PWR09
 U 1 1 5CD2D448
@@ -230,7 +222,7 @@ Wire Wire Line
 Wire Wire Line
 	5300 3000 5300 3400
 $Comp
-L Regulator_Linear:LM1117-3.3 U3
+L CameraMotor-rescue:LM1117-3.3-Regulator_Linear U3
 U 1 1 5CD33089
 P 8550 2900
 F 0 "U3" H 8550 3142 50  0000 C CNN
@@ -334,7 +326,7 @@ Wire Wire Line
 Wire Wire Line
 	4500 3550 4500 3800
 $Comp
-L Connector_Generic:Conn_01x03 J3
+L CameraMotor-rescue:Conn_01x03-Connector_Generic J3
 U 1 1 5CD47018
 P 2700 3350
 F 0 "J3" H 2618 3025 50  0000 C CNN
@@ -439,7 +431,7 @@ F 3 "" H 4050 5900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_DIP_x01 RES1
+L CameraMotor-rescue:SW_DIP_x01-Switch RES1
 U 1 1 5CD5B5DD
 P 4400 6300
 F 0 "RES1" V 4354 6430 50  0000 L CNN
@@ -504,18 +496,6 @@ Wire Wire Line
 Connection ~ 3750 5550
 Wire Wire Line
 	3750 5550 3750 5900
-Connection ~ 5000 2200
-Wire Wire Line
-	5000 2200 5000 2900
-Connection ~ 5100 2200
-Wire Wire Line
-	5100 2200 5100 1650
-Connection ~ 5200 2200
-Wire Wire Line
-	5200 2200 5200 2900
-Connection ~ 5300 2200
-Wire Wire Line
-	5300 2200 5300 1650
 $Comp
 L CameraMotor-rescue:R R6
 U 1 1 5CD75288
@@ -537,17 +517,9 @@ Wire Wire Line
 	6300 1950 6300 1700
 Connection ~ 6300 1700
 Wire Wire Line
-	5300 5000 5300 5200
-Wire Wire Line
-	5300 5200 6650 5200
-Wire Wire Line
-	6650 5200 6650 3750
-Wire Wire Line
-	6650 3750 5500 3750
-Wire Wire Line
-	5500 3750 5500 3000
+	5500 3500 5500 3000
 $Comp
-L Connector:Conn_01x02_Male J4
+L CameraMotor-rescue:Conn_01x02_Male-Connector J4
 U 1 1 5CD82EE7
 P 6900 1450
 F 0 "J4" V 6962 1494 50  0000 L CNN
@@ -577,7 +549,7 @@ Wire Wire Line
 Wire Wire Line
 	6800 2100 6800 1650
 $Comp
-L Switch:SW_DIP_x01 PROG1
+L CameraMotor-rescue:SW_DIP_x01-Switch PROG1
 U 1 1 5CD8B671
 P 3150 4450
 F 0 "PROG1" V 3104 4580 50  0000 L CNN
@@ -644,7 +616,6 @@ NoConn ~ 5500 5000
 NoConn ~ 5600 3000
 NoConn ~ 5600 2200
 NoConn ~ 4900 3800
-NoConn ~ 4800 3800
 NoConn ~ 4600 3800
 $Comp
 L CameraMotor-rescue:CP C3
@@ -667,4 +638,37 @@ Wire Wire Line
 Wire Wire Line
 	8000 3050 8000 2900
 Connection ~ 8000 2900
+Text Label 5000 1950 1    50   ~ 0
+Blue
+Text Label 5100 1950 1    50   ~ 0
+Pink
+Text Label 5200 1950 1    50   ~ 0
+Yellow
+Text Label 5300 1950 1    50   ~ 0
+Orange
+Wire Wire Line
+	5300 1650 5300 2200
+Wire Wire Line
+	5200 1650 5200 2200
+Wire Wire Line
+	5100 1650 5100 2200
+Wire Wire Line
+	5000 1650 5000 2200
+Connection ~ 5000 2200
+Wire Wire Line
+	5000 2200 5000 2900
+Connection ~ 5100 2200
+Wire Wire Line
+	5100 2200 5100 2900
+Connection ~ 5200 2200
+Wire Wire Line
+	5200 2200 5200 2900
+Connection ~ 5300 2200
+Wire Wire Line
+	5300 2200 5300 2900
+Wire Wire Line
+	5500 3500 4800 3500
+Wire Wire Line
+	4800 3500 4800 3800
+NoConn ~ 5300 5000
 $EndSCHEMATC

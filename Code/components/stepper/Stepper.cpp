@@ -33,14 +33,14 @@ const unsigned char Stepper::phases[8] = {
 	orange|blue,	// 7
 };
 
-Stepper::Stepper(gpio_num_t o, gpio_num_t y, gpio_num_t p, gpio_num_t b) :
+Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o) :
 		orange_pin(o),
 		yellow_pin(y),
 		pink_pin(p),
 		blue_pin(b),
 		current_pos(0),
 		current_phase(0),
-		ticks(10 / portTICK_PERIOD_MS),
+		ticks(3 / portTICK_PERIOD_MS),
 		direction(fwd),
 		last_wake_time(0),
 		task_handle(0)
@@ -87,8 +87,6 @@ void Stepper::step()
 	gpio_set_level(yellow_pin, (phases[current_phase] & 2) ? 1 : 0);
 	gpio_set_level(pink_pin,   (phases[current_phase] & 4) ? 1 : 0);
 	gpio_set_level(blue_pin,   (phases[current_phase] & 8) ? 1 : 0);
-
-	led.toggle();
 }
 
 void Stepper::task(void *p)
