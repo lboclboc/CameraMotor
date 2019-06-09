@@ -55,7 +55,7 @@ Stepper::~Stepper() {
 void Stepper::init()
 {
 	gpio_config_t gpio_cfg = {
-		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin),
+		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin) | BIT(GPIO_NUM_4) | BIT(GPIO_NUM_5),
 		GPIO_MODE_OUTPUT,
 		GPIO_PULLUP_DISABLE,
 		GPIO_PULLDOWN_DISABLE,
@@ -75,18 +75,24 @@ void Stepper::init()
 
 void Stepper::step()
 {
+    printf("Phase1: %d\n", current_phase);
 	current_phase += direction;
-	if (current_phase >= sizeof phases / sizeof phases[0]) {
+    printf("Phase2: %d\n", current_phase);
+    if (current_phase >= (int)(sizeof phases / sizeof phases[0])) {
 		current_phase = 0;
 	}
-	else if (current_phase < 0) {
-		current_phase = sizeof phases / sizeof phases[0] - 1;
+    else if (current_phase < 0) {
+		current_phase = (int)(sizeof phases / sizeof phases[0]) - 1;
+	    printf("Clamping negative phase\n");
 	}
+
 	// Set motor windings (via inverting transistor).
-	gpio_set_level(orange_pin, (phases[current_phase] & 1) ? 1 : 0);
-	gpio_set_level(yellow_pin, (phases[current_phase] & 2) ? 1 : 0);
-	gpio_set_level(pink_pin,   (phases[current_phase] & 4) ? 1 : 0);
-	gpio_set_level(blue_pin,   (phases[current_phase] & 8) ? 1 : 0);
+	gpio_set_level(orange_pin, (phases[current_phase] & orange) ? 1 : 0);
+	gpio_set_level(yellow_pin, (phases[current_phase] & yellow) ? 1 : 0);
+	gpio_set_level(pink_pin,   (phases[current_phase] & pink) ? 1 : 0);
+	gpio_set_level(blue_pin,   (phases[current_phase] & blue) ? 1 : 0);
+
+	current_pos += direction;
 }
 
 void Stepper::task(void *p)
@@ -111,5 +117,9 @@ void Stepper::run()
 	{
 		vTaskDelayUntil(&last_wake_time, ticks);
 		step();
+		if (current_pos >= 4096 || current_pos < 0) {
+			direction = -direction;
+		    printf("New direction: %d\n", direction);
+		}
 	}
 }

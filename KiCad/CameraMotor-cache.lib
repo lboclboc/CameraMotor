@@ -57,26 +57,6 @@ X ~ 2 0 -150 110 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# CameraMotor-rescue_Conn_01x02_Male-Connector
-#
-DEF CameraMotor-rescue_Conn_01x02_Male-Connector J 0 40 Y N 1 F N
-F0 "J" 0 100 50 H V C CNN
-F1 "CameraMotor-rescue_Conn_01x02_Male-Connector" 0 -200 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- Connector*:*_1x??_*
-$ENDFPLIST
-DRAW
-S 34 -95 0 -105 1 1 6 F
-S 34 5 0 -5 1 1 6 F
-P 2 1 1 6 50 -100 34 -100 N
-P 2 1 1 6 50 0 34 0 N
-X Pin_1 1 200 0 150 L 50 50 1 1 P
-X Pin_2 2 200 -100 150 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # CameraMotor-rescue_Conn_01x03-Connector_Generic
 #
 DEF CameraMotor-rescue_Conn_01x03-Connector_Generic J 0 40 Y N 1 F N
@@ -348,6 +328,32 @@ X D+ 3 300 0 100 L 50 50 1 1 P
 X ID 4 300 -200 100 L 50 50 1 1 P
 X GND 5 0 -400 100 U 50 50 1 1 W
 X Shield 6 -100 -400 100 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# conn_Conn_01x03
+#
+DEF conn_Conn_01x03 J 0 40 Y N 1 F N
+F0 "J" 0 200 50 H V C CNN
+F1 "conn_Conn_01x03" 0 -200 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_??x*mm*
+ Connector*:*1x??x*mm*
+ Pin?Header?Straight?1X*
+ Pin?Header?Angled?1X*
+ Socket?Strip?Straight?1X*
+ Socket?Strip?Angled?1X*
+$ENDFPLIST
+DRAW
+S -50 -95 0 -105 1 1 6 N
+S -50 5 0 -5 1 1 6 N
+S -50 105 0 95 1 1 6 N
+S -50 150 50 -150 1 1 10 f
+X Pin_1 1 -200 100 150 R 50 50 1 1 P
+X Pin_2 2 -200 0 150 R 50 50 1 1 P
+X Pin_3 3 -200 -100 150 R 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #

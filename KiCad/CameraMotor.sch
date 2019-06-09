@@ -167,7 +167,7 @@ U 1 1 5CD248CF
 P 5200 2600
 F 0 "U2" V 5246 3130 50  0000 L CNN
 F 1 "ULN2003" V 5155 3130 50  0000 L CNN
-F 2 "Package_SO:SOIC-16W_5.3x10.2mm_P1.27mm" H 5250 2050 50  0001 L CNN
+F 2 "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" H 5250 2050 50  0001 L CNN
 F 3 "http://www.ti.com/lit/ds/symlink/uln2003a.pdf" H 5300 2400 50  0001 C CNN
 	1    5200 2600
 	0    -1   -1   0   
@@ -519,35 +519,24 @@ Connection ~ 6300 1700
 Wire Wire Line
 	5500 3500 5500 3000
 $Comp
-L CameraMotor-rescue:Conn_01x02_Male-Connector J4
-U 1 1 5CD82EE7
-P 6900 1450
-F 0 "J4" V 6962 1494 50  0000 L CNN
-F 1 "Conn_01x02_Male" V 7053 1494 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6900 1450 50  0001 C CNN
-F 3 "~" H 6900 1450 50  0001 C CNN
-	1    6900 1450
-	0    1    1    0   
-$EndComp
-$Comp
 L CameraMotor-rescue:GNDD #PWR015
 U 1 1 5CD83F7D
-P 6900 2150
-F 0 "#PWR015" H 6900 1900 50  0001 C CNN
-F 1 "GNDD" H 6900 2025 50  0000 C CNN
-F 2 "" H 6900 2150 50  0001 C CNN
-F 3 "" H 6900 2150 50  0001 C CNN
-	1    6900 2150
+P 6900 2250
+F 0 "#PWR015" H 6900 2000 50  0001 C CNN
+F 1 "GNDD" H 6900 2125 50  0000 C CNN
+F 2 "" H 6900 2250 50  0001 C CNN
+F 3 "" H 6900 2250 50  0001 C CNN
+	1    6900 2250
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6900 1650 6900 2150
+	6900 1650 6900 2250
 Wire Wire Line
 	5500 2200 5500 2100
 Wire Wire Line
-	5500 2100 6800 2100
+	5500 2100 6700 2100
 Wire Wire Line
-	6800 2100 6800 1650
+	6700 2100 6700 1650
 $Comp
 L CameraMotor-rescue:SW_DIP_x01-Switch PROG1
 U 1 1 5CD8B671
@@ -613,9 +602,6 @@ NoConn ~ 5100 5000
 NoConn ~ 5200 5000
 NoConn ~ 5400 5000
 NoConn ~ 5500 5000
-NoConn ~ 5600 3000
-NoConn ~ 5600 2200
-NoConn ~ 4900 3800
 NoConn ~ 4600 3800
 $Comp
 L CameraMotor-rescue:CP C3
@@ -671,4 +657,29 @@ Wire Wire Line
 Wire Wire Line
 	4800 3500 4800 3800
 NoConn ~ 5300 5000
+Wire Wire Line
+	4900 3800 4900 3600
+Wire Wire Line
+	4900 3600 5600 3600
+Wire Wire Line
+	5600 3600 5600 3000
+$Comp
+L conn:Conn_01x03 J4
+U 1 1 5CFDB995
+P 6800 1450
+F 0 "J4" V 6764 1262 50  0000 R CNN
+F 1 "Conn_01x03" V 6673 1262 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 6800 1450 50  0001 C CNN
+F 3 "~" H 6800 1450 50  0001 C CNN
+	1    6800 1450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5600 2200 6800 2200
+Wire Wire Line
+	6800 2200 6800 1650
+Text Label 6800 2000 1    50   ~ 0
+Focus
+Text Label 6700 2000 1    50   ~ 0
+Shutter
 $EndSCHEMATC

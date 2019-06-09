@@ -146,7 +146,6 @@
 			<resource resourceType="PROJECT" workspacePath="/CameraMotor"/>
 		</configuration>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.427257704;cdt.managedbuild.toolchain.gnu.cross.base.427257704.1577518980;cdt.managedbuild.tool.gnu.cross.cpp.compiler.2099142554;cdt.managedbuild.tool.gnu.cpp.compiler.input.814849333">
@@ -161,5 +160,17 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.cross.base.427257704;cdt.managedbuild.toolchain.gnu.cross.base.427257704.1577518980;cdt.managedbuild.tool.gnu.cross.c.compiler.1826974521;cdt.managedbuild.tool.gnu.c.compiler.input.1279466875">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name="flash" path="components/stepper" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>flash</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+		</buildTargets>
 	</storageModule>
 </cproject>

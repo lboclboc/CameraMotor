@@ -20,6 +20,8 @@ public:
 	void step();
 	void set_period(float seconds);
 	void init();
+	static const int fwd = 1;
+	static const int rev = -1;
 
 protected:
 	void run();
@@ -32,7 +34,7 @@ private:
 	long current_pos;		// Current stepper position
 	short current_phase;
 	unsigned long ticks;		// Number of ticks between stepping.
-	enum {fwd=1, rev=-1} direction;
+	short direction;
 	const static unsigned char phases[8];
 	TickType_t last_wake_time;
 	Led led;
