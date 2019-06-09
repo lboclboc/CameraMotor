@@ -1,468 +1,300 @@
-1560108646122
-SMD_Packages
-1Pin
+1560109367245
+Housings_SOIC
+Diodes_PSOP-8
 
 
 0
 0
 0
-SMD_Packages
-BGA-48
+Housings_SOIC
+HSOP-20-1EP_11.0x15.9mm_Pitch1.27mm_SlugDown
 
 
 0
 0
 0
-SMD_Packages
-BGA-64-0.8mm
+Housings_SOIC
+HSOP-20-1EP_11.0x15.9mm_Pitch1.27mm_SlugDown_ThermalVias
 
 
 0
 0
 0
-SMD_Packages
-BGA-90-0.8mm
+Housings_SOIC
+HSOP-20-1EP_11.0x15.9mm_Pitch1.27mm_SlugUp
 
 
 0
 0
 0
-SMD_Packages
-BGA-96_pitch0.8mm_dia0.4mm
+Housings_SOIC
+HTSOP-8-1EP_3.9x4.9mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-BGA-121-1mm
+Housings_SOIC
+HTSOP-8-1EP_3.9x4.9mm_Pitch1.27mm_LargeCopper
 
 
 0
 0
 0
-SMD_Packages
-BGA-144-1mm
+Housings_SOIC
+HTSOP-8-1EP_3.9x4.9mm_Pitch1.27mm_ThermalVias
 
 
 0
 0
 0
-SMD_Packages
-BGA-256
+Housings_SOIC
+HTSOP-8-1EP_3.9x4.9mm_Pitch1.27mm_ThermalVias_LargeCopper
 
 
 0
 0
 0
-SMD_Packages
-BGA-256_pitch1mm_dia0.4mm
+Housings_SOIC
+Infineon_PG-DSO-8-43
 
 
 0
 0
 0
-SMD_Packages
-BGA-352
+Housings_SOIC
+PowerPAK_SO-8_Dual
 
 
 0
 0
 0
-SMD_Packages
-BGA-400-1mm
+Housings_SOIC
+PowerPAK_SO-8_Single
 
 
 0
 0
 0
-SMD_Packages
-BGA-484-1mm
+Housings_SOIC
+SO-4_4.4x2.3mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-BGA-625_pitch0.8mm_dia0.4mm
+Housings_SOIC
+SO-4_4.4x3.6mm_Pitch2.54mm
 
 
 0
 0
 0
-SMD_Packages
-BGA-1023-1mm
+Housings_SOIC
+SO-4_4.4x4.3mm_Pitch2.54mm
 
 
 0
 0
 0
-SMD_Packages
-BGA-1156-1mm
+Housings_SOIC
+SO-4_7.6x3.6mm_Pitch2.54mm
 
 
 0
 0
 0
-SMD_Packages
-BGA-1295-1mm
+Housings_SOIC
+SO-5_4.4x3.6mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Ceramic_Filter
+Housings_SOIC
+SO-6L_10x3.84mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Conn-3
+Housings_SOIC
+SO-6_4.4x3.6mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Conn-3_Inv
+Housings_SOIC
+SO-8_5.3x6.2mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Conn-5
+Housings_SOIC
+SO-20_12.8x7.5mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Conn-5_Inv
+Housings_SOIC
+SOIC-8-1EP_3.9x4.9mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Conn-20
+Housings_SOIC
+SOIC-8_3.9x4.9mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-DIP-8_SMD
+Housings_SOIC
+SOIC-14W_7.5x9.0mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-EMI_Filter
+Housings_SOIC
+SOIC-14_3.9x8.7mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-Fuse_SMD
+Housings_SOIC
+SOIC-16W_5.3x10.2mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-LFCSP-40-1EP
+Housings_SOIC
+SOIC-16W_7.5x10.3mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-MLF-44_Atmel
+Housings_SOIC
+SOIC-16W_7.5x12.8mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-PLCC-28
+Housings_SOIC
+SOIC-16_3.9x9.9mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-PLCC-32
+Housings_SOIC
+SOIC-18W_7.5x11.6mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-PLCC-44
+Housings_SOIC
+SOIC-20W_7.5x12.8mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-PLCC-52
+Housings_SOIC
+SOIC-24W_7.5x15.4mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-PLCC-68
+Housings_SOIC
+SOIC-28W_7.5x17.9mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-PLCC-84
+Housings_SOIC
+SOIC-28W_7.5x18.7mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-POT_SMD
+Housings_SOIC
+SOIJ-8_5.3x5.3mm_Pitch1.27mm
 
 
 0
 0
 0
-SMD_Packages
-powermite3
+Housings_SOIC
+SSO-6_6.8x4.6mm_Pitch1.27mm_Clearance7mm
 
 
 0
 0
 0
-SMD_Packages
-PQFP-112
+Housings_SOIC
+SSO-6_6.8x4.6mm_Pitch1.27mm_Clearance8mm
 
 
 0
 0
 0
-SMD_Packages
-PQFP-132_i386
+Housings_SOIC
+SSO-8_6.8x5.9mm_Pitch1.27mm_Clearance7mm
 
 
 0
 0
 0
-SMD_Packages
-PQFP-132_M
+Housings_SOIC
+SSO-8_6.8x5.9mm_Pitch1.27mm_Clearance8mm
 
 
 0
 0
 0
-SMD_Packages
-PQFP-160
+Housings_SOIC
+SSO-8_9.6x6.3mm_Pitch1.27mm_Clearance10.5mm
 
 
 0
 0
 0
-SMD_Packages
-PQFP-208
+Housings_SOIC
+SSO-8_13.6x6.3mm_Pitch1.27mm_Clearance14.2mm
 
 
 0
 0
 0
-SMD_Packages
-QFN-52-1EP_HandSoldering
+Housings_SOIC
+TI_SO-PowerPAD-8
 
 
 0
 0
 0
-SMD_Packages
-SMD-1206_Pol
+Housings_SOIC
+TI_SO-PowerPAD-8_ThermalVias
 
 
 0
 0
 0
-SMD_Packages
-SMD-1210_Pol
-
-
-0
-0
-0
-SMD_Packages
-SMD-2010_Pol
-
-
-0
-0
-0
-SMD_Packages
-SMD-2112_Pol
-
-
-0
-0
-0
-SMD_Packages
-SMD-2512_Pol
-
-
-0
-0
-0
-SMD_Packages
-SMD-4032
-
-
-0
-0
-0
-SMD_Packages
-SO-8_PowerPAK_Vishay_Single
-
-
-0
-0
-0
-SMD_Packages
-SO-16-L
-
-
-0
-0
-0
-SMD_Packages
-SO-16-N
-
-
-0
-0
-0
-SMD_Packages
-SO-16-W
-
-
-0
-0
-0
-SMD_Packages
-SOIC-8-N
-
-
-0
-0
-0
-SMD_Packages
-SOIC-14_N
-
-
-0
-0
-0
-SMD_Packages
-SOIC-24
-
-
-0
-0
-0
-SMD_Packages
-SOIC-28
-
-
-0
-0
-0
-SMD_Packages
-SOJ-28-W
-
-
-0
-0
-0
-SMD_Packages
-SOJ-32
-
-
-0
-0
-0
-SMD_Packages
-SOJ-32-W
-
-
-0
-0
-0
-SMD_Packages
-SOJ-40
-
-
-0
-0
-0
-SMD_Packages
-SOJ-42
-
-
-0
-0
-0
-SMD_Packages
-SSOP-14
-
-
-0
-0
-0
-SMD_Packages
-SSOP-20
-
-
-0
-0
-0
-SMD_Packages
-SUPSOJ40
-
-
-0
-0
-0
-SMD_Packages
-TSOP32SP
-
-
-0
-0
-0
-SMD_Packages
-VLM0806_Housing
-
-
-0
-0
-0
-SMD_Packages
-VLM0806_Housing_Handsoldering
-
-
-0
-0
-0
-SMD_Packages
-VQFP-240
+Housings_SOIC
+Zetex_SM8
 
 
 0
