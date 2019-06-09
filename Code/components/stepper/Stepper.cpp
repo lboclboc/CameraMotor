@@ -33,29 +33,29 @@ const unsigned char Stepper::phases[8] = {
 	orange|blue,	// 7
 };
 
-Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o) :
+Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o, float s) :
 		orange_pin(o),
 		yellow_pin(y),
 		pink_pin(p),
 		blue_pin(b),
 		current_pos(0),
 		current_phase(0),
-		ticks(3 / portTICK_PERIOD_MS),
+		ticks(0),
 		direction(fwd),
 		last_wake_time(0),
 		task_handle(0)
 {
-
+	set_period(s);
 }
 
 Stepper::~Stepper() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void Stepper::init()
 {
 	gpio_config_t gpio_cfg = {
-		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin) | BIT(GPIO_NUM_4) | BIT(GPIO_NUM_5),
+		BIT(orange_pin) | BIT(yellow_pin) | BIT(pink_pin) | BIT(blue_pin),
 		GPIO_MODE_OUTPUT,
 		GPIO_PULLUP_DISABLE,
 		GPIO_PULLDOWN_DISABLE,
@@ -75,15 +75,12 @@ void Stepper::init()
 
 void Stepper::step()
 {
-    printf("Phase1: %d\n", current_phase);
 	current_phase += direction;
-    printf("Phase2: %d\n", current_phase);
     if (current_phase >= (int)(sizeof phases / sizeof phases[0])) {
 		current_phase = 0;
 	}
     else if (current_phase < 0) {
 		current_phase = (int)(sizeof phases / sizeof phases[0]) - 1;
-	    printf("Clamping negative phase\n");
 	}
 
 	// Set motor windings (via inverting transistor).
@@ -117,9 +114,10 @@ void Stepper::run()
 	{
 		vTaskDelayUntil(&last_wake_time, ticks);
 		step();
+#if 0
 		if (current_pos >= 4096 || current_pos < 0) {
 			direction = -direction;
-		    printf("New direction: %d\n", direction);
 		}
+#endif
 	}
 }

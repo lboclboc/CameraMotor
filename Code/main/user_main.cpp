@@ -1,10 +1,8 @@
 /*
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
+ * TODO: WEP wireless.
+ * TODO: Stop or not while taking photo.
+ * TODO: Exposure time.
+ */
 
 #include <string>
 #ifdef __cplusplus
@@ -24,6 +22,11 @@ extern "C" {
 #include <task.h>
 #include <timers.h>
 #include <event_groups.h>
+
+#define MINOR_COGS 9
+#define MAJOR_COGS 37
+#define STEPS_PER_TURN 4096
+#define SIDEREAL_DAY_SECONDS ((((23 * 60.0) + 65) * 60.0) + 4.091)
 
 void app_main(void);
 
@@ -64,7 +67,7 @@ esp_err_t root_get_handler(httpd_req_t *req)
 //    }
 
 	char query[200];
-	float period = 0.01;
+	float period = (SIDEREAL_DAY_SECONDS * MINOR_COGS) / (MAJOR_COGS * STEPS_PER_TURN);
 	float timelapse = 0;
 	if (httpd_req_get_url_query_str(req, query, sizeof query) == ESP_OK) {
 		if (httpd_query_key_value(query, "period", template_period, sizeof template_period) == ESP_OK) {
