@@ -59,7 +59,7 @@
 					<folderInfo id="0.1862346903.89854131." name="/" resourcePath="">
 						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.1349974648" name="No ToolChain" resourceTypeBasedDiscovery="false" superClass="org.eclipse.cdt.build.core.prefbase.toolchain">
 							<targetPlatform binaryParser="" id="org.eclipse.cdt.build.core.prefbase.toolchain.1349974648.1120843775" name=""/>
-							<builder id="org.eclipse.cdt.build.core.settings.default.builder.1894521645" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder">
+							<builder id="org.eclipse.cdt.build.core.settings.default.builder.1894521645" incrementalBuildTarget="my_all" keepEnvironmentInBuildfile="false" managedBuildOn="false" name="Gnu Make Builder" superClass="org.eclipse.cdt.build.core.settings.default.builder">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name=""/>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="build"/>

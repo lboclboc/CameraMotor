@@ -38,6 +38,7 @@ void app_main(void);
 
 char template_period[20];
 char template_timelapse[20];
+char template_sidereal[20];
 
 #include "html_page.h"
 
@@ -67,7 +68,8 @@ esp_err_t root_get_handler(httpd_req_t *req)
 //    }
 
 	char query[200];
-	float period = (SIDEREAL_DAY_SECONDS * MINOR_COGS) / (MAJOR_COGS * STEPS_PER_TURN);
+	float sidereal = (SIDEREAL_DAY_SECONDS * MINOR_COGS) / (MAJOR_COGS * STEPS_PER_TURN);
+	float period = sidereal;
 	float timelapse = 0;
 	if (httpd_req_get_url_query_str(req, query, sizeof query) == ESP_OK) {
 		if (httpd_query_key_value(query, "period", template_period, sizeof template_period) == ESP_OK) {
@@ -85,6 +87,7 @@ esp_err_t root_get_handler(httpd_req_t *req)
 //	sprintf(template_period, " %f", period);
 	gcvtf(period, 3,template_period);
 	gcvtf(timelapse, 3,template_timelapse);
+	gcvtf(sidereal, 3,template_sidereal);
 	ESP_LOGI(TAG, "template_perios=%s", template_period);
 
 
