@@ -29,3 +29,8 @@ Code/main/html_page.h.gch
 *.gx
 KiCad/CameraMotor-rescue.lib
 KiCad/rescue-backup/
+KiCad/.~lock.CameraMotor.csv#
+KiCad/CameraMotor.csv
+KiCad/CameraMotor.xml
+KiCad/_autosave-CameraMotor.kicad_pcb
+KiCad/gerber.zip

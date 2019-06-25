@@ -35,6 +35,7 @@ void app_main(void);
 #endif
 
 #include "Stepper.h"
+#include "PowerLoad.h"
 
 char template_period[20];
 char template_timelapse[20];
@@ -49,24 +50,10 @@ const int WIFI_CONNECTED_BIT = BIT0;
 
 
 static Stepper stepper;
+static PowerLoad power_load;
 
 esp_err_t root_get_handler(httpd_req_t *req)
 {
-//    char*  buf;
-//    size_t buf_len;
-
-//    /* Get header value string length and allocate memory for length + 1,
-//     * extra byte for null termination */
-//    buf_len = httpd_req_get_hdr_value_len(req, "Host") + 1;
-//    if (buf_len > 1) {
-//        buf = (char *)malloc(buf_len);
-//        /* Copy null terminated value string into buffer */
-//        if (httpd_req_get_hdr_value_str(req, "Host", buf, buf_len) == ESP_OK) {
-//            ESP_LOGI(TAG, "Found header => Host: %s", buf);
-//        }
-//        free(buf);
-//    }
-
 	char query[200];
 	float sidereal = (SIDEREAL_DAY_SECONDS * MINOR_COGS) / (MAJOR_COGS * STEPS_PER_TURN);
 	float period = sidereal;
@@ -205,5 +192,6 @@ void app_main(void)
     static httpd_handle_t server = NULL;
     printf("SDK version:%s\n", esp_get_idf_version());
     stepper.init();
+    power_load.init();
     init_wifi(&server);
 }

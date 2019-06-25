@@ -125,7 +125,24 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="0.1862346903.89854131.160666623" name="/" resourcePath="components/led">
+						<toolChain id="org.eclipse.cdt.build.core.prefbase.toolchain.605904008" name="No ToolChain" superClass="org.eclipse.cdt.build.core.prefbase.toolchain" unusedChildren="">
+							<tool id="org.eclipse.cdt.build.core.settings.holder.libs.1184736078" name="holder for library settings" superClass="org.eclipse.cdt.build.core.settings.holder.libs.1965046608"/>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1488952122" name="Assembly" superClass="org.eclipse.cdt.build.core.settings.holder.102226417">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.730219980" languageId="org.eclipse.cdt.core.assembly" languageName="Assembly" sourceContentType="org.eclipse.cdt.core.asmSource" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.1868071456" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder.500552857">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.1796133429" languageId="org.eclipse.cdt.core.g++" languageName="GNU C++" sourceContentType="org.eclipse.cdt.core.cxxSource,org.eclipse.cdt.core.cxxHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+							<tool id="org.eclipse.cdt.build.core.settings.holder.2056517184" name="GNU C" superClass="org.eclipse.cdt.build.core.settings.holder.1908260367">
+								<inputType id="org.eclipse.cdt.build.core.settings.holder.inType.964896109" languageId="org.eclipse.cdt.core.gcc" languageName="GNU C" sourceContentType="org.eclipse.cdt.core.cSource,org.eclipse.cdt.core.cHeader" superClass="org.eclipse.cdt.build.core.settings.holder.inType"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="components/include"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="components/led"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="components/powerload"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="components/stepper"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="main"/>
 					</sourceEntries>
