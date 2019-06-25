@@ -9,6 +9,7 @@
 #include <driver/gpio.h>
 #include "Led.h"
 
+static const char *TAG = "Led";
 
 Led::Led() {
 	// TODO Auto-generated constructor stub

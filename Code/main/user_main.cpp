@@ -45,7 +45,7 @@ char template_sidereal[20];
 
 /* FreeRTOS event group to signal when we are connected*/
 static EventGroupHandle_t wifi_event_group;
-static const char *TAG = "simple wifi";
+static const char *TAG = "user_main";
 const int WIFI_CONNECTED_BIT = BIT0;
 
 
@@ -160,25 +160,35 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
 
 static void init_wifi(httpd_handle_t *server)
 {
-	printf("Setting up wifi..\n");
+	uint8_t mac[6];
+	char ssid[32];
+	ESP_LOGI(TAG, "Setting up wifi...");
+
 
 	wifi_event_group = xEventGroupCreate();
-
     tcpip_adapter_init();
     ESP_ERROR_CHECK(esp_event_loop_init(event_handler, server) );
+
+	ESP_ERROR_CHECK(esp_wifi_get_mac(ESP_IF_WIFI_AP, mac));
+	sprintf(ssid, "EQCAM%02X%02X%02X", mac[3], mac[4], mac[5]);
 
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
     wifi_config_t wifi_config;
     memset(&wifi_config, 0, sizeof wifi_config);
-    strcpy((char *)wifi_config.sta.ssid, "ceciliadataab");
-    strcpy((char *)wifi_config.sta.password, "asdqwe123");
+    strncpy((char *)wifi_config.ap.ssid, ssid, sizeof wifi_config.ap.ssid);
+    wifi_config.ap.ssid_len = strlen(ssid);
+    wifi_config.ap.max_connection = 5;
+    wifi_config.ap.authmode = WIFI_AUTH_WPA_WPA2_PSK;
 
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );
-    ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config) );
+    strncpy((char *)wifi_config.ap.password, "asdqwe123", sizeof wifi_config.ap.password);
+
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP) );
+    ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &wifi_config) );
     ESP_ERROR_CHECK(esp_wifi_start() );
 
-    ESP_LOGI(TAG, "wifi_init_sta finished.");
+    ESP_LOGI(TAG, "wifi_init_softap finished");
+
 }
 
 /******************************************************************************
@@ -190,8 +200,12 @@ static void init_wifi(httpd_handle_t *server)
 void app_main(void)
 {
     static httpd_handle_t server = NULL;
-    printf("SDK version:%s\n", esp_get_idf_version());
+    ESP_LOGI(TAG, "SDK version:%s\n", esp_get_idf_version());
     stepper.init();
     power_load.init();
     init_wifi(&server);
+
+    if (server == NULL) {
+        server = start_webserver();
+    }
 }

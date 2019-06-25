@@ -9,7 +9,7 @@ $(info PATH=$(PATH))
 
 IDF_PATH ?= /home/lasse/git/ESP8266_RTOS_SDK
 
-PROJECT_NAME := project_template
+PROJECT_NAME := EQCamera
 CFLAGS += -DICACHE_FLASH
 
 my_all: main/html_page.h all

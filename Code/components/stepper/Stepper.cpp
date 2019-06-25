@@ -9,7 +9,7 @@
 #include <FreeRTOS.h>
 #include <task.h>
 #include "Stepper.h"
-
+static const char *TAG = "Stepper";
 /*
  * Phase table for motor 28BYJ-48 (active low)
  * wire/phase  0 1 2 3 4 5 6 7
