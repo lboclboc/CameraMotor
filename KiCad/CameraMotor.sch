@@ -295,34 +295,8 @@ Wire Wire Line
 	5700 4400 6200 4400
 Wire Wire Line
 	6200 4400 6200 4650
-$Comp
-L CameraMotor-rescue:R R2
-U 1 1 5CD44B6E
-P 3700 3250
-F 0 "R2" V 3493 3250 50  0000 C CNN
-F 1 "680" V 3584 3250 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 3630 3250 50  0001 C CNN
-F 3 "" H 3700 3250 50  0001 C CNN
-	1    3700 3250
-	0    1    1    0   
-$EndComp
-$Comp
-L CameraMotor-rescue:R R3
-U 1 1 5CD45403
-P 3700 3550
-F 0 "R3" V 3493 3550 50  0000 C CNN
-F 1 "680" V 3584 3550 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 3630 3550 50  0001 C CNN
-F 3 "" H 3700 3550 50  0001 C CNN
-	1    3700 3550
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3850 3250 4700 3250
 Wire Wire Line
 	4700 3250 4700 3800
-Wire Wire Line
-	3850 3550 4500 3550
 Wire Wire Line
 	4500 3550 4500 3800
 $Comp
@@ -337,13 +311,9 @@ F 3 "~" H 2700 3350 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2900 3250 3550 3250
-Wire Wire Line
 	2900 3350 3300 3350
 Wire Wire Line
 	3300 3350 3300 3550
-Wire Wire Line
-	3300 3550 3550 3550
 $Comp
 L CameraMotor-rescue:GNDD #PWR02
 U 1 1 5CD4DD3A
@@ -682,4 +652,8 @@ Text Label 6800 2000 1    50   ~ 0
 Focus
 Text Label 6700 2000 1    50   ~ 0
 Shutter
+Wire Wire Line
+	2900 3250 4700 3250
+Wire Wire Line
+	3300 3550 4500 3550
 $EndSCHEMATC
