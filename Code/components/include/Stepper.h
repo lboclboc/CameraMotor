@@ -20,8 +20,8 @@ public:
 	void step();
 	void set_period(float seconds);
 	void init();
-	static const int fwd = 1;
-	static const int rev = -1;
+	static const int fwd = -1;
+	static const int rev = 1;
 
 protected:
 	void run();
