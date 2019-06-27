@@ -36,7 +36,6 @@ void app_main(void);
 
 #include "Stepper.h"
 #include "PowerLoad.h"
-//#include "Led.h"
 
 char template_period[20];
 char template_timelapse[20];
@@ -52,7 +51,6 @@ const int WIFI_CONNECTED_BIT = BIT0;
 
 static Stepper stepper;
 static PowerLoad power_load;
-//static Led led;
 
 esp_err_t root_get_handler(httpd_req_t *req)
 {
@@ -86,7 +84,6 @@ esp_err_t root_get_handler(httpd_req_t *req)
 	}
 	httpd_resp_send_chunk(req, 0, 0);
 
-//	led.toggle();
     return ESP_OK;
 }
 
@@ -204,11 +201,8 @@ void app_main(void)
 {
     printf("SDK version:%s\n", esp_get_idf_version());
 
-//    led.on();
     static httpd_handle_t server = NULL;
-//    auto led_toggler = []() -> void { led.toggle(); };
     stepper.init();
-//    stepper.set_step_callback(led_toggler);
     power_load.init();
     init_wifi(&server);
 
