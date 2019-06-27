@@ -12,13 +12,13 @@
 #include <task.h>
 #include <PowerLoad.h>
 
+// TODO: Loading of the powercell.
 PowerLoad::PowerLoad(gpio_num_t p) : pin(p) {
-	// TODO Auto-generated constructor stub
 
 }
 
 PowerLoad::~PowerLoad() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void PowerLoad::init()

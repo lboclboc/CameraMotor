@@ -1,1 +1,1 @@
-COMPONENT_SRCDIRS := stepper led powerload
+COMPONENT_SRCDIRS := stepper powerload

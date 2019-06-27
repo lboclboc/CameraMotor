@@ -12,7 +12,6 @@
 static const char *TAG = "Led";
 
 Led::Led() {
-	// TODO Auto-generated constructor stub
 	gpio_config_t gpio_cfg = {
 		GPIO_NUM_2, 			/*!< GPIO pin: set with bit mask, each bit maps to a GPIO */
 		GPIO_MODE_OUTPUT,		/*!< GPIO mode: set input/output mode */
@@ -26,7 +25,7 @@ Led::Led() {
 }
 
 Led::~Led() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void Led::on()
@@ -36,7 +35,7 @@ void Led::on()
 
 void Led::off()
 {
-	gpio_set_level(GPIO_NUM_2, 1);
+	gpio_set_level(GPIO_NUM_2, 0);
 }
 
 void Led::toggle()

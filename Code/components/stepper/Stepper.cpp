@@ -33,7 +33,7 @@ const unsigned char Stepper::phases[8] = {
 	orange|blue,	// 7
 };
 
-Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o, float s) :
+Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o, float s, step_callback_t cb) :
 		orange_pin(o),
 		yellow_pin(y),
 		pink_pin(p),
@@ -43,9 +43,10 @@ Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o, float s
 		ticks(0),
 		direction(fwd),
 		last_wake_time(0),
-		task_handle(0)
+		timer_handle(0),
+		step_callback(cb)
 {
-	set_period(s);
+//	set_period(s);
 }
 
 Stepper::~Stepper() {
@@ -63,14 +64,11 @@ void Stepper::init()
 	};
     ESP_ERROR_CHECK(gpio_config(&gpio_cfg));
 
-    printf("Setting wake times...\n");
-	last_wake_time = xTaskGetTickCount();
 	printf("Stepper created at address %p, tick=%ld\n", this, ticks);
 
-	/* Start the stepper task - defined in this file. */
-	if(xTaskCreate(Stepper::task, "stepper", configMINIMAL_STACK_SIZE + 512, this, tskIDLE_PRIORITY+10, &task_handle) == pdPASS) {
-		printf("Task 1 was properly created\n\r");
-	}
+	esp_timer_create_args_t args = {&timer_callback, this, ESP_TIMER_TASK, "stepper"};
+	ESP_ERROR_CHECK(esp_timer_create(&args, &timer_handle));
+	set_period(1);
 }
 
 void Stepper::step()
@@ -90,34 +88,23 @@ void Stepper::step()
 	gpio_set_level(blue_pin,   (phases[current_phase] & blue) ? 1 : 0);
 
 	current_pos += direction;
+	if (step_callback) {
+		(*step_callback)();
+	}
 }
 
-void Stepper::task(void *p)
+void Stepper::timer_callback(void *p)
 {
 	Stepper *s = (Stepper *)p;
-	s->run();
+	s->step();
 }
 
 void Stepper::set_period(float seconds)
 {
-	ticks = (int)(seconds * 1000 / portTICK_PERIOD_MS);
-	if (ticks == 0) ticks = 1;
-//	if (task_handle != 0) {
-//		xTaskAbortDelay(task_handle);
-//	}
-}
-
-void Stepper::run()
-{
-	printf("Stepper::run@%p called, ticks=%ld\n", this, ticks);
-	while(1)
-	{
-		vTaskDelayUntil(&last_wake_time, ticks);
-		step();
-#if 0
-		if (current_pos >= 4096 || current_pos < 0) {
-			direction = -direction;
-		}
-#endif
+	if (timer_handle == 0) {
+		return;
 	}
+
+	ESP_ERROR_CHECK(esp_timer_stop(timer_handle));
+	ESP_ERROR_CHECK(esp_timer_start_periodic(timer_handle, (uint64_t)(seconds * 1000000.0)));
 }

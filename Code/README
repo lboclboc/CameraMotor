@@ -3,3 +3,5 @@ To compile, read https://www.esp8266.com/viewtopic.php?f=9&t=12754
 Don't turn on C++ exception, that uses up too many sections in the image.
 
 Apply the patch xTimerAbortDelay.patch to the SDK.
+
+Using the Led disables UART Tx (and printf..)
