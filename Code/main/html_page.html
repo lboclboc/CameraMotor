@@ -1,24 +1,48 @@
 <html>
-<body>
-<form id='mainform'>
-<table style="font-size: xx-large;">
-<tr>
-<td>Period:</td>
-<td>
-<input name="period" value="{{period}}" width="10" style="font-size: xx-large;"/>
-<button type="button" name="default" value="reset" label="reset" onclick='mainform.period.value={{sidereal}};' style="font-size: xx-large;">sidereal</button>
-</td>
-</tr>
-<tr>
-<td>
-Timelapse:
-</td>
-<td>
-<input name="timelapse" value="{{timelapse}}" style="font-size: xx-large;"/>
-</td>
-</tr>
-</table>
-<button style="font-size: xx-large;">Apply</button>
-</form>
-</body>
-</html>
+	<head>
+		<style>
+			h1 {font-family: sans-serif; font-variant-caps: all-small-caps; text-align: center;}
+			label {font-size: x-large; display:block;}
+			input {font-size: xx-large; }
+			button {font-size: x-large;}
+			div {
+				border-radius: 20px;
+				background-color: #f2f2f2;
+				padding: 20px;
+			}
+		</style>
+		<script>
+			function update360time() {
+				period = parseFloat(document.getElementById("period").value);
+				turn_seconds = period * 4096 * 37 / 9;
+				hours = Math.floor(turn_seconds / 3600);
+				turn_seconds -= 3600 * hours;
+				minutes = Math.floor(turn_seconds / 60);
+				turn_seconds -= 60 * minutes;
+				seconds = turn_seconds;
+				document.getElementById("turn").value = hours + " h " + minutes + " m " + seconds.toFixed(3) + " s";
+				document.getElementById("period").focus();
+			}
+		</script>
+	</head>
+	<body onload="update360time()">
+		<h1>EQ Camera v2.0</h1>
+		<div>
+			<form id='mainform' border=3>
+				<label for=period>Period:</label>
+				<input type=text id="period" name="period" value="{{period}}" width="10" onchange="update360time()"/>
+				<!--<label for=turn>Whole 360 degree:</label>-->
+				&nbsp;&nbsp;<input style="font-size: x-large; background-color: #f2f2f2; border: 0;" readonly name="turn" id="turn"/>
+				<br/>
+				<button type="button" name="default" value="reset" label="reset" onclick='mainform.period.value="{{sidereal}}";update360time();'>sidereal</button>
+				<br/>
+				<label for=timelapse>Timelapse:</label>
+				<input name="timelapse" value="{{timelapse}}"/>
+				<br/>
+				<button>Apply</button>
+			</form>
+		</div>
+	</body>
+	</html>
+<!-- vi: noet sw=4 ts=4 ai
+-->
