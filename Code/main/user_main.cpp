@@ -1,7 +1,6 @@
 /*
  * TODO: Stop or not while taking photo.
  * TODO: Exposure time.
- * TODO: HTML page should remember last set value.
  */
 
 #include <string>
@@ -51,32 +50,29 @@ const int WIFI_CONNECTED_BIT = BIT0;
 
 static Stepper stepper;
 static PowerLoad power_load;
+static float sidereal = (SIDEREAL_DAY_SECONDS * MINOR_COGS) / (MAJOR_COGS * STEPS_PER_TURN);
+static float period = sidereal;
 
 esp_err_t root_get_handler(httpd_req_t *req)
 {
 	char query[200];
-	float sidereal = (SIDEREAL_DAY_SECONDS * MINOR_COGS) / (MAJOR_COGS * STEPS_PER_TURN);
-	float period = sidereal;
+
 	float timelapse = 0;
 	if (httpd_req_get_url_query_str(req, query, sizeof query) == ESP_OK) {
 		if (httpd_query_key_value(query, "period", template_period, sizeof template_period) == ESP_OK) {
 			period = atof(template_period);
-			stepper.set_period(period);
-			ESP_LOGI(TAG, "Period=%d", (int)(period*100));
+			period = stepper.set_period(period);
 		}
 
 		if (httpd_query_key_value(query, "timelapse", template_timelapse, sizeof template_timelapse) == ESP_OK) {
 			timelapse = atof(template_timelapse);
-			ESP_LOGI(TAG, "timelapse=%d", (int)(timelapse*100));
 		}
 	}
 
-//	sprintf(template_period, " %f", period);
-	gcvtf(period, 3,template_period);
-	gcvtf(timelapse, 3,template_timelapse);
-	gcvtf(sidereal, 3,template_sidereal);
-	ESP_LOGI(TAG, "template_perios=%s", template_period);
-
+	gcvtf(period, 7,template_period);
+	gcvtf(timelapse, 7,template_timelapse);
+	gcvtf(sidereal, 7,template_sidereal);
+	ESP_LOGI(TAG, "template_period=%s", template_period);
 
     /* Send response */
 	for (const char *s : html_page) {
@@ -203,6 +199,7 @@ void app_main(void)
 
     static httpd_handle_t server = NULL;
     stepper.init();
+    stepper.set_period(sidereal);
     power_load.init();
     init_wifi(&server);
 

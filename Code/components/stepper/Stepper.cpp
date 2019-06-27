@@ -6,10 +6,9 @@
  */
 #include <stdio.h>
 #include <esp_system.h>
-#include <FreeRTOS.h>
-#include <task.h>
+#include <driver/hw_timer.h>
 #include "Stepper.h"
-static const char *TAG = "Stepper";
+//static const char *TAG = "Stepper";
 /*
  * Phase table for motor 28BYJ-48 (active low)
  * wire/phase  0 1 2 3 4 5 6 7
@@ -42,9 +41,8 @@ Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o, float s
 		current_phase(0),
 		ticks(0),
 		direction(fwd),
-		last_wake_time(0),
-		timer_handle(0),
-		step_callback(cb)
+		step_callback(cb),
+		prescaler(1)
 {
 //	set_period(s);
 }
@@ -66,13 +64,18 @@ void Stepper::init()
 
 	printf("Stepper created at address %p, tick=%ld\n", this, ticks);
 
-	esp_timer_create_args_t args = {&timer_callback, this, ESP_TIMER_TASK, "stepper"};
-	ESP_ERROR_CHECK(esp_timer_create(&args, &timer_handle));
-	set_period(1);
+	ESP_ERROR_CHECK(hw_timer_init(&timer_callback, this));
+	printf("Timer clkdiv %d\n", hw_timer_get_clkdiv());
 }
 
 void Stepper::step()
 {
+	static unsigned short clk = 0;
+	if (++clk < prescaler) {
+		return;
+	}
+	clk = 0;
+
 	current_phase += direction;
     if (current_phase >= (int)(sizeof phases / sizeof phases[0])) {
 		current_phase = 0;
@@ -99,12 +102,17 @@ void Stepper::timer_callback(void *p)
 	s->step();
 }
 
-void Stepper::set_period(float seconds)
+float Stepper::set_period(float seconds)
 {
-	if (timer_handle == 0) {
-		return;
-	}
+	prescaler = (seconds > 1) ? 1000 : 1;
 
-	ESP_ERROR_CHECK(esp_timer_stop(timer_handle));
-	ESP_ERROR_CHECK(esp_timer_start_periodic(timer_handle, (uint64_t)(seconds * 1000000.0)));
+	ESP_ERROR_CHECK(hw_timer_disarm());
+	if (seconds <= 0.001) {
+		seconds = 0.001;
+	}
+	uint32_t us = seconds *(1000000/prescaler);
+	printf("Setting timer to %d\n", us);
+	ESP_ERROR_CHECK(hw_timer_alarm_us(us, true));
+	ESP_ERROR_CHECK(hw_timer_enable(true));
+	return seconds;
 }

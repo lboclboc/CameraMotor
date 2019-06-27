@@ -8,8 +8,6 @@
 #ifndef STEPPER_H_
 #define STEPPER_H_
 #include <driver/gpio.h>
-#include <timers.h>
-#include <esp_timer.h>
 
 typedef void (*step_callback_t)(void);
 
@@ -24,7 +22,7 @@ public:
 			step_callback_t step_callback=0);
 	virtual ~Stepper();
 	void step();
-	void set_period(float seconds);
+	float set_period(float seconds);
 	void set_step_callback(step_callback_t cb) { step_callback = cb; }
 	void init();
 	static const int fwd = -1;
@@ -44,9 +42,8 @@ private:
 	unsigned long ticks;		// Number of ticks between stepping.
 	short direction;
 	const static unsigned char phases[8];
-	TickType_t last_wake_time;
-	esp_timer_handle_t timer_handle;
 	step_callback_t step_callback;
+	unsigned short prescaler;
 };
 
 #endif /* STEPPER_H_ */
