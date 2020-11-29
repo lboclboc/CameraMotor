@@ -26,7 +26,7 @@
 		</script>
 	</head>
 	<body onload="update360time()">
-		<h1>EQ Camera v2.0</h1>
+		<h1>EQ Camera v2.1</h1>
 		<div>
 			<form id='mainform' border=3>
 				<label for=period>Period:</label>
@@ -35,6 +35,9 @@
 				&nbsp;&nbsp;<input style="font-size: x-large; background-color: #f2f2f2; border: 0;" readonly name="turn" id="turn"/>
 				<br/>
 				<button type="button" name="default" value="reset" label="reset" onclick='mainform.period.value="{{sidereal}}";update360time();'>sidereal</button>
+				<label for=direction>Direction:</label>
+				<input type="radio" name="direction" value="cw" {{cw_checked}}> Clockwise</input>
+				<input type="radio" name="direction" value="ccw" {{ccw_checked}}> Counter Clockwise</input>
 				<br/>
 				<label for=timelapse>Timelapse:</label>
 				<input name="timelapse" value="{{timelapse}}"/>

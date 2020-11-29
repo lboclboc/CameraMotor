@@ -14,6 +14,7 @@ typedef void (*step_callback_t)(void);
 class Stepper
 {
 public:
+	enum direction_t {CW, CCW};
 	Stepper(gpio_num_t b=GPIO_NUM_12,
 			gpio_num_t p=GPIO_NUM_13,
 			gpio_num_t y=GPIO_NUM_14,
@@ -24,6 +25,8 @@ public:
 	void step();
 	float set_period(float seconds);
 	void set_step_callback(step_callback_t cb) { step_callback = cb; }
+	void set_direction(direction_t dir);
+	direction_t get_direction();
 	void init();
 	static const int fwd = -1;
 	static const int rev = 1;

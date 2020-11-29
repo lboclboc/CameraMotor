@@ -25,7 +25,7 @@ extern "C" {
 #define MINOR_COGS 9
 #define MAJOR_COGS 37
 #define STEPS_PER_TURN 4096
-#define SIDEREAL_DAY_SECONDS ((((23 * 60.0) + 65) * 60.0) + 4.091)
+#define SIDEREAL_DAY_SECONDS ((((23 * 60.0) + 56) * 60.0) + 4.091)
 
 void app_main(void);
 
@@ -39,6 +39,9 @@ void app_main(void);
 char template_period[20];
 char template_timelapse[20];
 char template_sidereal[20];
+char template_direction[20];
+char template_cw_checked[20];
+char template_ccw_checked[20];
 
 #include "html_page.h"
 
@@ -67,6 +70,27 @@ esp_err_t root_get_handler(httpd_req_t *req)
 		if (httpd_query_key_value(query, "timelapse", template_timelapse, sizeof template_timelapse) == ESP_OK) {
 			timelapse = atof(template_timelapse);
 		}
+
+		if (httpd_query_key_value(query, "direction", template_direction, sizeof template_direction) == ESP_OK) {
+			if (strncmp("ccw", template_direction, sizeof template_direction) == 0) {
+				stepper.set_direction(Stepper::CCW);
+			}
+			else {
+				stepper.set_direction(Stepper::CW);
+			}
+		}
+	}
+
+	switch(stepper.get_direction())
+	{
+	case Stepper::CCW:
+		strcpy(template_ccw_checked, "checked");
+		strcpy(template_cw_checked, "");
+		break;
+
+	default:
+		strcpy(template_ccw_checked, "");
+		strcpy(template_cw_checked, "checked");
 	}
 
 	gcvtf(period, 7,template_period);
@@ -76,7 +100,9 @@ esp_err_t root_get_handler(httpd_req_t *req)
 
     /* Send response */
 	for (const char *s : html_page) {
-		httpd_resp_send_chunk(req, s, strlen(s));
+		if (strlen(s) != 0) {
+			httpd_resp_send_chunk(req, s, strlen(s));
+		}
 	}
 	httpd_resp_send_chunk(req, 0, 0);
 

@@ -40,11 +40,11 @@ Stepper::Stepper(gpio_num_t b, gpio_num_t p, gpio_num_t y, gpio_num_t o, float s
 		current_pos(0),
 		current_phase(0),
 		ticks(0),
-		direction(fwd),
+		direction(-1),
 		step_callback(cb),
 		prescaler(1)
 {
-//	set_period(s);
+	set_direction(CW);
 }
 
 Stepper::~Stepper() {
@@ -115,4 +115,21 @@ float Stepper::set_period(float seconds)
 	ESP_ERROR_CHECK(hw_timer_alarm_us(us, true));
 	ESP_ERROR_CHECK(hw_timer_enable(true));
 	return seconds;
+}
+
+void Stepper::set_direction(direction_t dir)
+{
+	switch(dir)
+	{
+	case CCW:
+		direction = 1;
+		break;
+	default:
+		direction = -1;
+	}
+}
+
+Stepper::direction_t Stepper::get_direction(void)
+{
+	return direction == 1 ? Stepper::CCW : Stepper::CW;
 }
