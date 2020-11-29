@@ -1,4 +1,16 @@
-To compile, read https://www.esp8266.com/viewtopic.php?f=9&t=12754
+To compile:
+
+- Clone the same repo
+- Build the docker image in tools/docker with: docker build -t esp-idf .
+- docker run -it --rm -w $(pwd) -v /etc/passwd:/etc/passwd -v /etc/shadow:/etc/shadow -u 1000 -v $HOME:$HOME esp-idf make menuconfig
+   -> Set toolchain prefix to: xtensa-esp32-elf-
+
+In the docker run:
+- /opt/esp/idf/install.sh 
+- /opt/esp/idf/export.
+- /opt/esp/idf/export.sh 
+- make
+- docker run -it --rm -w $(pwd) -v /etc/passwd:/etc/passwd -v /etc/shadow:/etc/shadow -u 1000 -v $HOME:$HOME esp-idf make
 
 Don't turn on C++ exception, that uses up too many sections in the image.
 

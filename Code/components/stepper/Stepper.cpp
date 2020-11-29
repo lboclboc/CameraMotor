@@ -6,7 +6,7 @@
  */
 #include <stdio.h>
 #include <esp_system.h>
-#include <driver/hw_timer.h>
+#include <driver/timer.h>
 #include "Stepper.h"
 //static const char *TAG = "Stepper";
 /*
@@ -62,9 +62,19 @@ void Stepper::init()
 	};
     ESP_ERROR_CHECK(gpio_config(&gpio_cfg));
 
+    /* Select and initialize basic parameters of the timer */
+    timer_config_t config = {
+        .divider = TIMER_DIVIDER,
+        .counter_dir = TIMER_COUNT_UP,
+        .counter_en = TIMER_PAUSE,
+        .alarm_en = TIMER_ALARM_EN,
+        .auto_reload = auto_reload,
+    }; // default clock source is APB
+    timer_init(TIMER_GROUP_0, timer_idx, &config);
+
 	printf("Stepper created at address %p, tick=%ld\n", this, ticks);
 
-	ESP_ERROR_CHECK(hw_timer_init(&timer_callback, this));
+	ESP_ERROR_CHECK(timer_init(&timer_callback, this));
 	printf("Timer clkdiv %d\n", hw_timer_get_clkdiv());
 }
 
